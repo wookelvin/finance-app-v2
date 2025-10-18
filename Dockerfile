@@ -29,6 +29,10 @@ RUN npm ci --omit=dev
 # Copy built application from builder stage
 COPY --from=builder /app/.nuxt ./.nuxt
 COPY --from=builder /app/.output ./.output
+COPY prisma ./prisma
+
+# Create data directory for SQLite database
+RUN mkdir -p /app/data
 
 # Expose port
 EXPOSE 7654
@@ -37,6 +41,7 @@ EXPOSE 7654
 ENV NODE_ENV=production
 ENV PORT=7654
 ENV HOST=0.0.0.0
+ENV DATABASE_URL="file:./data/prod.db"
 
-# Start the application
-CMD ["node", ".output/server/index.mjs"]
+# Run migrations and start the application
+CMD ["sh", "-c", "npx prisma migrate deploy && node .output/server/index.mjs"]
