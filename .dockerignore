@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.nuxt
+.output
+dist
+.env
+.env.*
+!.env.example
+.vscode
+.DS_Store
+*.md
+.editorconfig

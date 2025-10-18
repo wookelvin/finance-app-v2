@@ -1,0 +1,26 @@
+{
+  "name": "2025-10-17-FinanceApp",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "production-build": "docker build -t finance-app .",
+    "production-run": "docker run -p 7654:7654 finance-app"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/scripts": "^0.13.0",
+    "@nuxt/test-utils": "^3.19.2",
+    "@nuxt/ui": "^4.0.1",
+    "@unhead/vue": "^2.0.19",
+    "eslint": "^9.38.0",
+    "nuxt": "^4.1.3",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
+  }
+}

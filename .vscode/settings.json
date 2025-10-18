@@ -1,0 +1,45 @@
+{
+  // ESLint configuration
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html"
+  ],
+  "eslint.useFlatConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  
+  // Disable Prettier integration
+  "prettier.enable": false,
+  "editor.defaultFormatter": null,
+  
+  // Avoid conflicts with ESLint
+  "[javascript]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "[vue]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "[html]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  }
+}
