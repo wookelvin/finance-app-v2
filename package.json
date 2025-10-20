@@ -10,8 +10,7 @@
     "postinstall": "nuxt prepare",
     "db": "prisma migrate dev",
     "db:studio": "prisma studio",
-    "production-build": "docker build -t finance-app .",
-    "production-run": "docker run -p 7654:7654 finance-app"
+    "deploy": "chmod +x scripts/deploy.sh && scripts/deploy.sh"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.9.0",

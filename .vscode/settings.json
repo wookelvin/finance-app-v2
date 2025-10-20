@@ -1,4 +1,15 @@
 {
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.classAttributes": ["class", "ui"],
+  "tailwindCSS.experimental.classRegex": [
+    ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+
   // ESLint configuration
   "eslint.validate": [
     "javascript",
@@ -41,5 +52,14 @@
   "[html]": {
     "editor.defaultFormatter": null,
     "editor.formatOnSave": false
-  }
+  },
+
+  // File nesting: hide .env files under a single .env item
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    ".env": ".env.*, .env"
+  },
+
+  // Sort files by type first, then alphabetically
+  "explorer.sortOrder": "type"
 }

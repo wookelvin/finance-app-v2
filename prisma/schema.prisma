@@ -10,10 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Add your models here
-// Example model:
-// model User {
-//   id    Int     @id @default(autoincrement())
-//   email String  @unique
-//   name  String?
-// }
+// Institution model to track financial institutions
+model Institution {
+  id           String   @id @default(cuid())
+  name         String
+  code         String   @unique
+  transactions Transaction[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Transaction model to track transactions for a given institution
+model Transaction {
+  id                String      @id @default(cuid())
+  institutionId     String
+  institution       Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  date              DateTime
+  description       String
+  vendor            String
+  category          String
+  transactionAmount Float
+  confirmed         Boolean     @default(false)
+  createdBy         String
+  updatedBy         String
+  createdDate       DateTime    @default(now())
+  updatedDate       DateTime    @updatedAt
+
+  @@index([institutionId])
+  @@index([date])
+}

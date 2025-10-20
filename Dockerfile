@@ -3,11 +3,16 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+# Set npm configurations for better reliability
+RUN npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set fetch-retries 5
+
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies with timeout and retry settings
+RUN npm ci --prefer-offline --no-audit --no-fund
 
 # Copy application code
 COPY . .
@@ -20,11 +25,16 @@ FROM node:22-alpine
 
 WORKDIR /app
 
+# Set npm configurations for better reliability
+RUN npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set fetch-retries 5
+
 # Copy package files
 COPY package*.json ./
 
-# Install production dependencies only
-RUN npm ci --omit=dev
+# Install production dependencies with optimizations
+RUN npm ci --omit=dev --prefer-offline --no-audit --no-fund
 
 # Copy built application from builder stage
 COPY --from=builder /app/.nuxt ./.nuxt

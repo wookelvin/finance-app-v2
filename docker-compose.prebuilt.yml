@@ -1,0 +1,18 @@
+services:
+  finance-app:
+    image: finance-app:latest  # Use pre-built image instead of building
+    ports:
+      - "7654:7654"
+    environment:
+      - NODE_ENV=production
+      - PORT=7654
+      - HOST=0.0.0.0
+      - DATABASE_URL=file:./data/prod.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    container_name: finance-app-prod
+
+volumes:
+  data:
+    driver: local
